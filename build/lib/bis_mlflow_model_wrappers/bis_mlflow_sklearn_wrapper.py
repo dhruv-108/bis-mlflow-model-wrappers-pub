@@ -14,9 +14,7 @@ class SKLearnWrapper(mlflow.pyfunc.PythonModel):
         pass
 
     def load_context(self, context):
-        self.sklearn_model = pickle.load(
-            open(context.sklearn_artifacts["sklearn_model"], "rb")
-        )
+        self.sklearn_model = pickle.load(open(context.artifacts["sklearn_model"], "rb"))
 
     def predict(self, model, data):
         model_predictions = self.sklearn_model.predict_proba(data)
