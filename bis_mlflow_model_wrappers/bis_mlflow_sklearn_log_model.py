@@ -19,7 +19,7 @@ def add_package_to_environment_file():
 
         contents.insert(
             contents.index("- pip:\n") + 1,
-            "  - git+ssh://git@github.com/dhruv-108/bis-mlflow-model-wrappers.git@main\n",
+            "  - git+https://github.com/dhruv-108/bis-mlflow-model-wrappers-pub.git\n",
         )
         with open(conda_env_file, "w") as f:
             contents = "".join(contents)
