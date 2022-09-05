@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+bis_mlflow_model_wrappers/__init__.py
+bis_mlflow_model_wrappers/bis_mlflow_sklearn_log_model.py
+bis_mlflow_model_wrappers/bis_mlflow_sklearn_wrapper.py
+bis_mlflow_model_wrappers.egg-info/PKG-INFO
+bis_mlflow_model_wrappers.egg-info/SOURCES.txt
+bis_mlflow_model_wrappers.egg-info/dependency_links.txt
+bis_mlflow_model_wrappers.egg-info/requires.txt
+bis_mlflow_model_wrappers.egg-info/top_level.txt
