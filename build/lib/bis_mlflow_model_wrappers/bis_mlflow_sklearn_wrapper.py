@@ -17,5 +17,6 @@ class SKLearnWrapper(mlflow.pyfunc.PythonModel):
         self.sklearn_model = pickle.load(open(context.artifacts["sklearn_model"], "rb"))
 
     def predict(self, model, data):
-        model_predictions = self.sklearn_model.predict_proba(data)
-        return [[np.max(row), np.argmax(row)] for row in model_predictions]
+        return self.sklearn_model.predict_proba(data)
+        # model_predictions = self.sklearn_model.predict_proba(data)
+        # return [[np.max(row), np.argmax(row)] for row in model_predictions]
