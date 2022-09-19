@@ -28,7 +28,7 @@ def add_package_to_environment_file():
         print(f"{conda_env_file} does not exist!")
 
 
-def save_model(model) -> None:
+def save_model(model, model_type: str = "classifier") -> None:
 
     # tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
     # # Model registry does not work with file store
@@ -46,9 +46,14 @@ def save_model(model) -> None:
 
     pickle.dump(model, open("model.pkl", "wb"))
 
+    if model_type == "classifier":
+        python_model=bis_mlflow_model_wrappers.SKLearnClassifierWrapper()
+    else:
+        python_model=bis_mlflow_model_wrappers.SKLearnRegressionWrapper()
+
     mlflow.pyfunc.save_model(
         path=mlflow_custom_sklearn_model_path,
-        python_model=bis_mlflow_model_wrappers.SKLearnWrapper(),
+        python_model=python_model,
         artifacts=bis_mlflow_model_wrappers.sklearn_artifacts,
     )
 
@@ -59,7 +64,7 @@ def save_model(model) -> None:
         loader_module=None,
         data_path=None,
         conda_env=f"{mlflow_custom_sklearn_model_path}/conda.yaml",
-        python_model=bis_mlflow_model_wrappers.SKLearnWrapper(),
+        python_model=python_model,
         registered_model_name="Custom_mlflow_model",
         artifacts=bis_mlflow_model_wrappers.sklearn_artifacts,
     )
