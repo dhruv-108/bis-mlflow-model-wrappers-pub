@@ -28,7 +28,7 @@ def add_package_to_environment_file():
         print(f"{conda_env_file} does not exist!")
 
 
-def save_model(model, model_type: str = "classifier") -> None:
+def save_model(model, model_name: str, model_type: str = "classifier") -> None:
 
     # tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
     # # Model registry does not work with file store
@@ -65,7 +65,7 @@ def save_model(model, model_type: str = "classifier") -> None:
         data_path=None,
         conda_env=f"{mlflow_custom_sklearn_model_path}/conda.yaml",
         python_model=python_model,
-        registered_model_name="Custom_mlflow_model",
+        registered_model_name=model_name,
         artifacts=bis_mlflow_model_wrappers.sklearn_artifacts,
     )
 
